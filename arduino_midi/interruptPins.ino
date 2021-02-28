@@ -12,23 +12,34 @@ void initISR(){
  attachInterrupt(digitalPinToInterrupt(button[5]), ISRPin21, RISING);
 }
 
-// For example MIDI.sendNoteOn(42, 127, 1); //(pitch, vel, channel)
-
+void initPins() {
+    //Init pins of Arduino
+  for(int i=0; i < NUMOFBUTTONS; i++){
+  pinMode(button[i], INPUT);
+  pinMode(led[i], OUTPUT);
+    }
+  }
+  
 void ISRPin2(){
   sendNote(47);
   }
+  
 void ISRPin3(){
   sendNote(48);
   }
+  
 void ISRPin18(){
   sendNote(49);
   }
+  
 void ISRPin19(){
   sendNote(50);
   }
+  
 void ISRPin20(){
   sendNote(51);
   }
+  
 void ISRPin21(){
   sendNote(52);
   }

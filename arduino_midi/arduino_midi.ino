@@ -1,3 +1,4 @@
+
 /* 
   Created 26 Feb 2021
   by Rubén Garrido
@@ -7,6 +8,7 @@
 */
 
 #include <MIDI.h>
+#include <LiquidCrystal.h>
 
 #define NUMOFBUTTONS  6
 
@@ -18,16 +20,8 @@ const int led[NUMOFBUTTONS] = {6,7,8,9,10,11};
 
 void setup() {
   
-  // Set MIDI baud rate:
   Serial.begin(31250);
-  
-  //Init pins of Arduino
-  for(int i=0; i<NUMOFBUTTONS; i++){
-  pinMode(button[i], INPUT);
-  pinMode(led[i], OUTPUT);
-  }
-
-  //Init ISR for buttons
+  initPins();
   initISR();
 
 }
