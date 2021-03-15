@@ -3,7 +3,7 @@
   Created 26 Feb 2021
   by Rubén Garrido
 
-  Arduino midi controller with Arduino Mega 2560 
+  Arduino MIDI controller using Arduino Mega 2560 
   
 */
 
@@ -20,12 +20,13 @@ const int led[NUMOFBUTTONS] = {6,7,8,9,10,11};
 
 void setup() {
   
-  Serial.begin(31250);
+  Serial.begin(9600);
   initPins();
   initISR();
 
 }
 
 void loop() {
-  
+
+  delay(20);
 }
