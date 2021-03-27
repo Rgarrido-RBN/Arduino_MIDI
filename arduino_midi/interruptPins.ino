@@ -22,30 +22,36 @@ void initPins() {
 
 void ISRPin2(){
   sendPreset(1);
+  toogleLED(1);
 }
   
 void ISRPin3(){
   sendPreset(2);
+  toogleLED(2);
   }
   
 void ISRPin18(){
   sendPreset(3);
+  toogleLED(3);
   }
   
 void ISRPin19(){
   sendPreset(4);
+  toogleLED(4);
   }
   
 void ISRPin20(){
   sendPreset(5);
+  toogleLED(5);
   }
   
 void ISRPin21(){
   sendPreset(6);
+  toogleLED(6);
   }
 
 void sendPreset(int preset){
-  int prevPreset = 0;
+  
   if(prevPreset != preset)
   {
     prevPreset = preset;
