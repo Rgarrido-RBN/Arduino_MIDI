@@ -6,13 +6,10 @@
   Arduino MIDI controller using Arduino Mega 2560 
   
 */
-
-#include <MIDI.h>
-#include <LiquidCrystal.h>
+#include "MIDI.h"
 
 #define NUMOFBUTTONS  6
 
-MIDI_CREATE_DEFAULT_INSTANCE();
 // Digital Pins usables for interrupts 2, 3, 18, 19, 20, 21
 
 const int button[NUMOFBUTTONS] = {2,3,18,19,20,21};
@@ -26,7 +23,6 @@ void setup() {
 
 }
 
-void loop() {
-
-  delay(20);
+void loop() 
+{
 }
