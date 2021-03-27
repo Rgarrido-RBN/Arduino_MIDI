@@ -5,11 +5,11 @@
 */
 void initISR(){
 attachInterrupt(digitalPinToInterrupt(button[0]), ISRPin2, FALLING);
-attachInterrupt(digitalPinToInterrupt(button[1]), ISRPin3, RISING);
-attachInterrupt(digitalPinToInterrupt(button[2]), ISRPin18, RISING);
-attachInterrupt(digitalPinToInterrupt(button[3]), ISRPin19, RISING);
-attachInterrupt(digitalPinToInterrupt(button[4]), ISRPin20, RISING);
-attachInterrupt(digitalPinToInterrupt(button[5]), ISRPin21, RISING);
+attachInterrupt(digitalPinToInterrupt(button[1]), ISRPin3, FALLING);
+attachInterrupt(digitalPinToInterrupt(button[2]), ISRPin18, FALLING);
+attachInterrupt(digitalPinToInterrupt(button[3]), ISRPin19, FALLING);
+attachInterrupt(digitalPinToInterrupt(button[4]), ISRPin20, FALLING);
+attachInterrupt(digitalPinToInterrupt(button[5]), ISRPin21, FALLING);
 }
 
 void initPins() {
@@ -19,7 +19,7 @@ void initPins() {
   pinMode(led[i], OUTPUT);
     }
   }
-  
+
 void ISRPin2(){
   sendPreset(1);
 }
