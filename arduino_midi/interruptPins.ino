@@ -53,13 +53,16 @@ void ISRPin21()
   preset = sendPreset(5);
 }
 
-unsigned int sendPreset(int actPreset){
+short int sendPreset(short int actPreset){
   
   if(prevPreset != actPreset)
   {
     prevPreset = actPreset;
-    Serial.print(actPreset);
+    Serial.print(actPreset, bank);
     digitalWrite(led[actPreset], HIGH);
   }
 }
+
+
+
   
