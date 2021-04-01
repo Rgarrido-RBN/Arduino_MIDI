@@ -6,9 +6,9 @@
   
 */
 
-void lcdScreen(unsigned char presetName)
+void printPreset(unsigned char presetName)
 {
-lcd.print(presetname);
+lcd.print(presetName);
 }
 
 
