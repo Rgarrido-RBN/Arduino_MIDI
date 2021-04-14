@@ -1,8 +1,8 @@
-
 /* 
   created 26 Feb 2021
   by Rubén Garrido
 */
+
 void initISR()
 {
 attachInterrupt(digitalPinToInterrupt(button[0]), ISRPin2, FALLING);
@@ -11,16 +11,24 @@ attachInterrupt(digitalPinToInterrupt(button[2]), ISRPin18, FALLING);
 attachInterrupt(digitalPinToInterrupt(button[3]), ISRPin19, FALLING);
 attachInterrupt(digitalPinToInterrupt(button[4]), ISRPin20, FALLING);
 attachInterrupt(digitalPinToInterrupt(button[5]), ISRPin21, FALLING);
+
+Serial.write("Interrupt pins init completed");
 }
 
 void initPins() 
 {
-    //Init pins of Arduino
+    //Init input pins of Arduino
   for(int i=0; i < NUMOFBUTTONS; i++)
   {
     pinMode(button[i], INPUT_PULLUP);
-    pinMode(led[i], OUTPUT);
   }
+    //Init output pins of Arduino
+   for(int j=0; j < NUMOFBUTTONS - 2; j++)
+  {
+    pinMode(led[j], OUTPUT);
+  }
+
+Serial.write("Pins initialization completed");
 }
 
 void ISRPin2()

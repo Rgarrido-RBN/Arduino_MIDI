@@ -8,10 +8,10 @@
 
 void checkBank()
 {
-bool bankButtonStateUp = digitalRead(button[7]);
+  
+bool bankButtonStateUp = digitalRead(button[6]);
 bool bankButtonStateDown = digitalRead(button[7]); 
-bool prevBankButtonStateUp;
-bool prevBankButtonStateDown;
+
   if( bankButtonStateUp == HIGH && bankButtonStateUp != prevBankButtonStateUp ) 
   {
     bank++;
@@ -41,7 +41,7 @@ void printPresetOfBank()
 }
 
 
-void printPreset(unsigned char presetName)
+void printPreset(char* presetName)
 {
 lcd.print(presetName);
 }

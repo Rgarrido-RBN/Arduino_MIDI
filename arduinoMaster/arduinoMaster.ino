@@ -5,7 +5,7 @@
   Arduino MIDI controller using Arduino Mega 2560 
   
 */
-#include "MIDI.h"
+
 #include <LiquidCrystal.h>
 
 #define NUMOFBUTTONS  8
@@ -17,39 +17,42 @@ const int led[NUMOFBUTTONS] = {6,7,8,9,10,11};
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 24, d7 = 25;
 short int preset = 0;
 short int bank = 0;
+bool prevBankButtonStateUp = false;
+bool prevBankButtonStateDown = false;
+
 
 short int prevPreset = 0;
 
 LiquidCrystal lcd(rs, en, d4, d5, d6, d7);
 
-unsigned char presetsOfBank0LookUpTable[]
+char* presetsOfBank0LookUpTable[]
 {
-  'Preset Name 1',
-  'Preset Name 2',
-  'Preset Name 3',
-  'Preset Name 4',
-  'Preset Name 5',
-  'Preset Name 6'
+  "Preset_Name_1",
+  "Preset Name 2",
+  "Preset Name 3",
+  "Preset Name 4",
+  "Preset Name 5",
+  "Preset Name 6"
 };
 
-unsigned char presetsOfBank1LookUpTable[]
+char* presetsOfBank1LookUpTable[]
 {
-  'Preset Name 1',
-  'Preset Name 2',
-  'Preset Name 3',
-  'Preset Name 4',
-  'Preset Name 5',
-  'Preset Name 6'
+  "Preset Name 1",
+  "Preset Name 2",
+  "Preset Name 3",
+  "Preset Name 4",
+  "Preset Name 5",
+  "Preset Name 6"
 };
 
-unsigned char presetsOfBank2LookUpTable[]
+char* presetsOfBank2LookUpTable[]
 {
-  'Preset Name 1',
-  'Preset Name 2',
-  'Preset Name 3',
-  'Preset Name 4',
-  'Preset Name 5',
-  'Preset Name 6'
+  "Preset Name 1",
+  "Preset Name 2",
+  "Preset Name 3",
+  "Preset Name 4",
+  "Preset Name 5",
+  "Preset Name 6"
 };
 
 void setup() 
@@ -69,5 +72,5 @@ if( preset != prevPreset)
 {
  printPresetOfBank(); 
 }
-
+delay(10);
 }
