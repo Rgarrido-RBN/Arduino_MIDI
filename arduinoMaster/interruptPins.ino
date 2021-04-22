@@ -69,6 +69,7 @@ short int sendPreset(short int actPreset){
     Serial.print(actPreset, bank);
     digitalWrite(led[actPreset], HIGH);
   }
+  return actPreset;
 }
 
 

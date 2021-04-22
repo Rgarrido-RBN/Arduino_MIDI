@@ -26,24 +26,36 @@ prevBankButtonStateDown = bankButtonStateDown;
 
 void printPresetOfBank()
 {
-  switch(bank)
+  switch(preset)
   {
     case 0 :
-      printPreset(presetsOfBank0LookUpTable[preset]);
+      printPreset(presetsTopLeftLookUpTable[bank]);
     break;
     case 1 :
-      printPreset(presetsOfBank1LookUpTable[preset]);
+      printPreset(presetsBottomLeftLookUpTable[bank]);
     break;
     case 2 :
-      printPreset(presetsOfBank2LookUpTable[preset]);
+      printPreset(presetsTopRightLookUpTable[bank]);
     break;
+    case 3 :
+      printPreset(presetsBottomRightLookUpTable[bank]);
+    break;
+    case 4 :
+      printPreset(presetsTopCenterLookUpTable[bank]);
+    break;
+    case 5 :
+      printPreset(presetsBottomCenterLookUpTable[bank]);
+    break;
+  
+  
+  
   }
 }
 
 
 void printPreset(char* presetName)
 {
-lcd.print(presetName);
+//lcd.print(presetName);
 }
 
 
