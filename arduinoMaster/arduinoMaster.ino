@@ -91,7 +91,6 @@ char* presetsTopRightLookUpTable[]
   "Preset Name 6"
 };
 
-
 void setup() 
 {
   Serial.begin(9600);
@@ -109,7 +108,7 @@ checkBank();
 
 if( preset != prevPreset)
 {
- printPresetOfBank(); 
+ printPresetOfBank(1); 
 }
 delay(10);
 }

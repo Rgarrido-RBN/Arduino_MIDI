@@ -24,38 +24,35 @@ prevBankButtonStateUp = bankButtonStateUp;
 prevBankButtonStateDown = bankButtonStateDown;    
 }
 
-void printPresetOfBank()
+void printPresetOfBank(int mode)
 {
-  switch(preset)
+  if(mode == 1)
   {
-    case 0 :
-      printPreset(presetsTopLeftLookUpTable[bank]);
-    break;
-    case 1 :
-      printPreset(presetsBottomLeftLookUpTable[bank]);
-    break;
-    case 2 :
-      printPreset(presetsTopRightLookUpTable[bank]);
-    break;
-    case 3 :
-      printPreset(presetsBottomRightLookUpTable[bank]);
-    break;
-    case 4 :
-      printPreset(presetsTopCenterLookUpTable[bank]);
-    break;
-    case 5 :
-      printPreset(presetsBottomCenterLookUpTable[bank]);
-    break;
-  
-  
-  
+  lcdLeft.setCursor(0, 0);
+  lcdLeft.print(presetsTopLeftLookUpTable[bank]);
+
+  lcdLeft.setCursor(1, 0);
+  lcdLeft.print(presetsBottomLeftLookUpTable[bank]);
+
+  lcdRight.setCursor(0, 0);
+  lcdRight.print(presetsTopRightLookUpTable[bank]);
+
+  lcdRight.setCursor(1, 0);
+  lcdRight.print(presetsBottomRightLookUpTable[bank]);
+
+  lcdCenter.setCursor(0, 0);
+  lcdCenter.print(presetsTopCenterLookUpTable[bank]);
+
+  lcdCenter.setCursor(1, 0);
+  lcdCenter.print(presetsBottomCenterLookUpTable[bank]);
   }
-}
-
-
-void printPreset(char* presetName)
-{
-//lcd.print(presetName);
+  
+  #ifdef PEDAL_MODE_ENABLED 
+  else 
+  {
+    //TODO: Implementation of pedal selection mode
+  }
+  #endif
 }
 
 
