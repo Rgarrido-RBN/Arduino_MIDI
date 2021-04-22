@@ -8,33 +8,26 @@
 
 int checkBank()
 {
-  
-bool bankButtonStateUp = digitalRead(button[6]);
-bool bankButtonStateDown = digitalRead(button[7]); 
 
-  if( bankButtonStateUp == HIGH && bankButtonStateUp != prevBankButtonStateUp ) 
-  {
+  bool bankButtonStateUp = digitalRead(button[6]);
+  bool bankButtonStateDown = digitalRead(button[7]);
+
+  if (bankButtonStateUp == HIGH && bankButtonStateUp != prevBankButtonStateUp) {
     bank++;
     timeMeasured = millis();
-  }
-  else if (millis() - timeMeasured > 1500 && bankButtonStateUp == HIGH)
-  {
-    if(screenMode == PRESET_MODE)
-    {
+  } else if (millis() - timeMeasured > 1500 && bankButtonStateUp == HIGH) {
+    if (screenMode == PRESET_MODE) {
       bank = 0;
       return PEDAL_MODE;
-    }
-    else if(screenMode == PEDAL_MODE)
-    {
+    } else if (screenMode == PEDAL_MODE) {
       return PRESET_MODE;
     }
-  }
-  else if ( bankButtonStateUp == HIGH && bankButtonStateUp != prevBankButtonStateUp )
-  {
+  } else if (bankButtonStateUp == HIGH &&
+             bankButtonStateUp != prevBankButtonStateUp) {
     bank--;
   }
-prevBankButtonStateUp = bankButtonStateUp;
-prevBankButtonStateDown = bankButtonStateDown;    
+  prevBankButtonStateUp = bankButtonStateUp;
+  prevBankButtonStateDown = bankButtonStateDown;
 }
 
 void printPresetOfBank(int mode)
