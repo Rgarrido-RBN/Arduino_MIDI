@@ -16,21 +16,30 @@ const int button[NUMOFBUTTONS] = {2,3,18,19,20,21,22,23};
 const int led[NUMOFBUTTONS] = {6,7,8,9,10,11};
 
 const int rsLeft = 12, enLeft = 11, d4Left = 5, d5Left = 4, d6Left = 24, d7Left = 25;
-const int rsRight = 26, enRight = 27, d4Right = 28, d5Right = 29, d6Right = 30, d7Right = 31; // TODO: Check if pins cpuld be used
+const int rsRight = 26, enRight = 27, d4Right = 28, d5Right = 29, d6Right = 30, d7Right = 31; // TODO: Check if pins could be used
 const int rsCenter = 32, enCenter = 33, d4Center = 34, d5Center = 35, d6Center = 36, d7Center = 37; // TODO: Check if pins cpuld be used
 
 short int preset = 0;
 short int bank = 0;
+short int screenMode = 1;
 
 bool prevBankButtonStateUp = false;
 bool prevBankButtonStateDown = false;
 
 short int prevPreset = 0;
 
+unsigned long int timeMeasured = 0;
+
 LiquidCrystal lcdLeft(rsLeft, enLeft, d4Left, d5Left, d6Left, d7Left);
 LiquidCrystal lcdRight(rsRight, enRight, d4Right, d5Right, d6Right, d7Right);
 LiquidCrystal lcdCenter(rsCenter, enCenter, d4Center, d5Center, d6Center, d7Center);
 
+typedef enum
+{
+  PRESET_MODE = 1,
+  PEDAL_MODE = -1,
+
+}screenModes;
 char* presetsTopLeftLookUpTable[]
 {
   "Preset_Name_1",
@@ -91,6 +100,16 @@ char* presetsTopRightLookUpTable[]
   "Preset Name 6"
 };
 
+char* pedalsLookUpTable[]
+{
+  "Pedal1",
+  "Pedal2",
+  "Pedal3",
+  "Pedal4",
+  "Pedal5",
+  "Pedal6"
+};
+
 void setup() 
 {
   Serial.begin(9600);
@@ -104,11 +123,9 @@ void setup()
 void loop() 
 {
 
-checkBank();
+screenMode = checkBank();
 
-if( preset != prevPreset)
-{
- printPresetOfBank(1); 
-}
+printPresetOfBank(screenMode); 
+
 delay(10);
 }
