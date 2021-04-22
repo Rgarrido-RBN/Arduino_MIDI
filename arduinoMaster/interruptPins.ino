@@ -12,7 +12,7 @@ attachInterrupt(digitalPinToInterrupt(button[3]), ISRPin19, FALLING);
 attachInterrupt(digitalPinToInterrupt(button[4]), ISRPin20, FALLING);
 attachInterrupt(digitalPinToInterrupt(button[5]), ISRPin21, FALLING);
 
-Serial.write("Interrupt pins init completed");
+Serial.write("Interrupt pins init completed \n");
 }
 
 void initPins() 
@@ -23,12 +23,12 @@ void initPins()
     pinMode(button[i], INPUT_PULLUP);
   }
     //Init output pins of Arduino
-   for(int j=0; j < NUMOFBUTTONS - 2; j++)
+   for(int j=0; j < NUM_OF_LEDS; j++)
   {
     pinMode(led[j], OUTPUT);
   }
 
-Serial.write("Pins initialization completed");
+Serial.write("Pins initialization completed\n");
 }
 
 void ISRPin2()
@@ -66,8 +66,23 @@ short int sendPreset(short int actPreset){
   if(prevPreset != actPreset)
   {
     prevPreset = actPreset;
-    Serial.print(actPreset, bank);
-    digitalWrite(led[actPreset], HIGH);
+    
+    Serial.print("Actual preset is: "); Serial.print(actPreset); //DEBUG
+    Serial.print("Actual bank is: "); Serial.print(bank); //DEBUG
+    
+    for(int i; i <= NUM_OF_LEDS; i++)
+    {
+      if(i == actPreset)
+      {
+        digitalWrite(led[i], HIGH);  
+      }
+      else
+      {
+        digitalWrite(led[i], LOW);
+      }
+      
+    }
+    
   }
   return actPreset;
 }

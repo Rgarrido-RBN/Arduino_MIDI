@@ -9,11 +9,13 @@
 #include <LiquidCrystal.h>
 
 #define NUMOFBUTTONS  8
+#define NUM_OF_LEDS  6
+#define PEDAL_MODE_ENABLE
 
 // Digital Pins usables for interrupts 2, 3, 18, 19, 20, 21
 
 const int button[NUMOFBUTTONS] = {2,3,18,19,20,21,22,23};
-const int led[NUMOFBUTTONS] = {6,7,8,9,10,11};
+const int led[NUM_OF_LEDS] = {6,7,8,9,10,11};
 
 const int rsLeft = 12, enLeft = 11, d4Left = 5, d5Left = 4, d6Left = 24, d7Left = 25;
 const int rsRight = 26, enRight = 27, d4Right = 28, d5Right = 29, d6Right = 30, d7Right = 31; // TODO: Check if pins could be used
