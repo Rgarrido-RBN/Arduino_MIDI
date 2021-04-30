@@ -17,8 +17,10 @@ Serial.write("Interrupt pins init completed \n");
 
 void initPins() 
 {
+    //In don't know why but pin 2 must be inilialized as a normal input
+    //pinMode(button[0], INPUT_PULLUP);
     //Init input pins of Arduino
-  for(int i=0; i < NUMOFBUTTONS; i++)
+  for(int i=1; i < NUMOFBUTTONS; i++)
   {
     pinMode(button[i], INPUT_PULLUP);
   }
@@ -34,11 +36,13 @@ Serial.write("Pins initialization completed\n");
 void ISRPin2()
 {
   preset = sendPreset(0);
+  Serial.print("Actual preset is 0 and I don't know why \n ");
 }
   
 void ISRPin3()
 {
   preset = sendPreset(1);
+  Serial.print("Actual preset is 1 and I don't know why \n ");
 }
   
 void ISRPin18()
@@ -67,12 +71,12 @@ short int sendPreset(short int actPreset){
   {
     prevPreset = actPreset;
     
-    Serial.print("Actual preset is: "); Serial.print(actPreset); //DEBUG
-    Serial.print("Actual bank is: "); Serial.print(bank); //DEBUG
+    Serial.print("Actual preset is: "); Serial.print(actPreset); Serial.print("\n");//DEBUG
+    Serial.print("Actual bank is: "); Serial.print(bank); Serial.print("\n"); //DEBUG
     
     for(int i; i <= NUM_OF_LEDS; i++)
     {
-      if(i == actPreset)
+      if(i == actPreset && actPreset != prevPreset)
       {
         digitalWrite(led[i], HIGH);  
       }

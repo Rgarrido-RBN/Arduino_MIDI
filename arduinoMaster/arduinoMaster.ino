@@ -38,10 +38,12 @@ LiquidCrystal lcdCenter(rsCenter, enCenter, d4Center, d5Center, d6Center, d7Cent
 
 typedef enum
 {
+
   PRESET_MODE = 1,
   PEDAL_MODE = -1,
 
 }screenModes;
+
 char* presetsTopLeftLookUpTable[]
 {
   "Preset_Name_1",
@@ -115,8 +117,10 @@ char* pedalsLookUpTable[]
 void setup() 
 {
   Serial.begin(9600);
+
   initPins();
   initISR();
+
   lcdLeft.begin(16, 2);
   lcdRight.begin(16, 2);
   lcdCenter.begin(16, 2);
@@ -127,7 +131,10 @@ void loop()
 
 screenMode = checkBank();
 
-printPresetOfBank(screenMode); 
+if(preset != prevPreset)
+{
+  printPresetOfBank(screenMode); 
+}
 
 delay(10);
 }
